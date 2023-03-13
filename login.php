@@ -78,9 +78,9 @@ if(isset($_SESSION['username'])){
             }
         ?>
         <form class="login-form" method="POST" action="login_process.php">
-            <label class="form-label">사용자 이름:</label>
+            <label class="form-label">ID:</label>
             <input class="form-input" type="text" name="username">
-            <label class="form-label">비밀번호:</label>
+            <label class="form-label">PW:</label>
             <input class="form-input" type="password" name="password">
             <input class="form-submit" type="submit" value="로그인">
         </form>
