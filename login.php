@@ -69,7 +69,7 @@ if(isset($_SESSION['username'])){
     </style>
 </head>
 <body>
-    <h1>로그인인창입니다.</h1>
+    <h1>로그인</h1>
     <div class="login-container">
         <?php
             if(isset($_SESSION['error'])){
@@ -85,7 +85,7 @@ if(isset($_SESSION['username'])){
             <input class="form-submit" type="submit" value="로그인">
         </form>
         <div class="form-link">
-            <a href="membership.php">아이디가없으면눌러 </a>
+            <a href="membership.php">회원가입</a>
         </div>
     </div>
 </body>
