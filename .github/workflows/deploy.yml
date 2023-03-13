@@ -17,8 +17,8 @@ jobs:
           key: ${{ secrets.YGNISSHTESTKEYPAIR }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /git
-            git pull origin master
+            cd /git/cicdtestphp
+            git pull origin main
             sudo cp -r /git/cicdtestphp/* /var/www/html/
       - name: Deploy2
         uses: appleboy/ssh-action@master
@@ -28,6 +28,6 @@ jobs:
           key: ${{ secrets.YGNISSHTESTKEYPAIR }}
           port: ${{ secrets.PORT2 }}
           script: |
-            cd /git
-            git pull origin master
+            cd /git/cicdtestphp
+            git pull origin main
             sudo cp -r /git/cicdtestphp/* /var/www/html/
