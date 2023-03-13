@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy application
-      env:
+        env:
           SSH_PRIVATE_KEY: ${{ secrets.YGNISSHTESTKEYPAIR }}
         run: |
           mkdir -p ~/.ssh
