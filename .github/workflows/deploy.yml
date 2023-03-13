@@ -20,4 +20,5 @@ jobs:
           ssh-keyscan -p 10009 211.253.8.168 >> ~/.ssh/known_hosts
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/ygni.pem
           chmod 600 ~/.ssh/ygni.pem
-          ssh -i ~/.ssh/ygni.pem root@211.253.8.168 -p 10009 "sudo cp -R ./* /var/www/html/"
+          ssh -o UserKnownHostsFile=~/.ssh/known_hosts -i ~/.ssh/ygni.pem root@211.253.8.168 -p 10009 "sudo cp -R ./* /var/www/html/"
+
