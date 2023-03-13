@@ -1,19 +1,21 @@
-name: Deploy PHP Application
-
+name: CI/CD for PHP Application
 on:
   push:
-    branches: [ main ]
-
+    branches:
+      - main
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Git Repository
+      - name: Checkout
         uses: actions/checkout@v2
-      - name: Configure SSH Connection
-        uses: webfactory/ssh-agent@v0.4.0
+      - name: Deploy
+        uses: appleboy/ssh-action@master
         with:
-          ssh-private-key: ${{ secrets.YGNISSHTESTKEYPAIR }}
-      - name: Deploy PHP Application
-        run: |
-          ssh -o StrictHostKeyChecking=no -p ${{ secrets.PORT }} ${{ secrets.USER }}@${{ secrets.HOST }} 'cd /var/www/html && git pull origin main'
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.YGNISSHTESTKEYPAIR }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd /var/www/html/
+            git pull origin main
