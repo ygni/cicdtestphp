@@ -19,6 +19,4 @@ jobs:
           script: |
             cd /git
             git pull origin master
-            cd /cicdtestphp
-            cd /var/www/html/
             sudo cp -r /git/cicdtestphp/* /var/www/html/
