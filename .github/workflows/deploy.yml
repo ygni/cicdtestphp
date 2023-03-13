@@ -15,9 +15,9 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.YGNISSHTESTKEYPAIR }}
         run: |
           mkdir -p ~/.ssh
+          touch ~/.ssh/known_hosts
+          ssh-keygen -R "[211.253.8.168]:10009" -f ~/.ssh/known_hosts
+          ssh-keyscan -p 10009 211.253.8.168 >> ~/.ssh/known_hosts
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/ygni.pem
           chmod 600 ~/.ssh/ygni.pem
-          touch ~/.ssh/known_hosts
-          ssh-keygen -R "[211.253.8.168]:10009"
-          ssh-keyscan -p 10009 211.253.8.168 >> ~/.ssh/known_hosts
           ssh -i ~/.ssh/ygni.pem root@211.253.8.168 -p 10009 "sudo cp -R ./* /var/www/html/"
