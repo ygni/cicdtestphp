@@ -85,7 +85,7 @@ if(isset($_SESSION['username'])){
             <input class="form-submit" type="submit" value="로그인">
         </form>
         <div class="form-link">
-            <a href="membership.php">아이디가 </a>
+            <a href="membership.php">아이디가어쩌구 </a>
         </div>
     </div>
 </body>
