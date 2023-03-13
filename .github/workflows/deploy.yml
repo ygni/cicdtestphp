@@ -11,5 +11,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Deploy application
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.YGNISSHTESTKEYPAIR }}
         run: |
-          sudo cp -R ./* /var/www/html/
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/ygni.pem
+          chmod 600 ~/.ssh/ygni.pem
+          ssh -i ~/.ssh/ygni.pem root@211.253.8.168 -p 10009 "sudo cp -R ./* /var/www/html/"
+          ssh -i ~/.ssh/ygni.pem root@211.253.8.168 -p 10019 "sudo cp -R ./* /var/www/html/"
