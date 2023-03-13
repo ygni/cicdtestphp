@@ -17,5 +17,8 @@ jobs:
           key: ${{ secrets.YGNISSHTESTKEYPAIR }}
           port: ${{ secrets.PORT }}
           script: |
+            cd /git
+            git pull origin master
+            cd /cicdtestphp
             cd /var/www/html/
-            git pull origin main
+            sudo cp -r /git/cicdtestphp/* /var/www/html/
