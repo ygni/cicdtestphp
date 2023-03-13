@@ -1,23 +1,19 @@
-name: CI/CD for PHP Application
+name: Deploy PHP Application
+
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Git Repository
         uses: actions/checkout@v2
-      - name: Deploy application
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.YGNISSHTESTKEYPAIR }}
+      - name: Configure SSH Connection
+        uses: webfactory/ssh-agent@v0.4.0
+        with:
+          ssh-private-key: ${{ secrets.YGNISSHTESTKEYPAIR }}
+      - name: Deploy PHP Application
         run: |
-          mkdir -p ~/.ssh
-          touch ~/.ssh/known_hosts
-          ssh-keygen -R "[211.253.8.168]:10009" -f ~/.ssh/known_hosts
-          ssh-keyscan -p 10009 211.253.8.168 >> ~/.ssh/known_hosts
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/ygni.pem
-          chmod 600 ~/.ssh/ygni.pem
-          ssh -o UserKnownHostsFile=~/.ssh/known_hosts -i ~/.ssh/ygni.pem root@211.253.8.168 -p 10009 "sudo cp -R ./* /var/www/html/"
+          ssh -o StrictHostKeyChecking=no -p ${{ secrets.PORT }} ${{ secrets.USER }}@${{ secrets.HOST }} 'cd /var/www/html && git pull origin main'
