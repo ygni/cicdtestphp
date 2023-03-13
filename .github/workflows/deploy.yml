@@ -20,3 +20,14 @@ jobs:
             cd /git
             git pull origin master
             sudo cp -r /git/cicdtestphp/* /var/www/html/
+      - name: Deploy2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.YGNISSHTESTKEYPAIR }}
+          port: ${{ secrets.PORT2 }}
+          script: |
+            cd /git
+            git pull origin master
+            sudo cp -r /git/cicdtestphp/* /var/www/html/
