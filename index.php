@@ -41,7 +41,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to my website!</h1>
+        <h1>테스트 index 페이지입니다.</h1>
         <a class="btn" href="login.php">로그인</a>
         <a class="btn" href="membership.php">회원가입</a>
     </div>
