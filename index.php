@@ -40,16 +40,16 @@
 </head>
 <body>
     <div class="jumbotron">
-        <h1 class="display-4">Welcome to Test Homepage</h1>
-        <p class="lead">This is a simple and stylish homepage created for testing purposes.</p>
+        <h1 class="display-4">테스트 페이지</h1>
+        <p class="lead">아무것도없음</p>
         <hr class="my-4">
         <p>Please login or sign up to continue.</p>
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Log In</h5>
-                        <p class="card-text">Already have an account?</p>
+                        <h5 class="card-title">LogIn</h5>
+                        <p class="card-text">가입되신분만</p>
                         <a href="login.php" class="btn btn-lg btn-block">Log In</a>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Sign Up</h5>
-                        <p class="card-text">Don't have an account yet?</p>
+                        <p class="card-text">아이디가 없으면</p>
                         <a href="membership.php" class="btn btn-lg btn-block btn-success">Sign Up</a>
                     </div>
                 </div>
